@@ -13,17 +13,20 @@ int main()
 	pers Eva("Eva", gender::female);
 	Eva.print(cout);
 	cout << endl;
-	pers Masha = *Eva.getBirth("Masha", gender::female, &Adam);
-	Masha.print(cout);
+	pers Dasha = *Eva.getBirth("Dasha", gender::female, &Adam);
+	Dasha.print(cout);
 	cout << endl;
 	pers Ivan = *Eva.getBirth("Ivan", gender::male, &Adam);
 	Ivan.print(cout);
 	cout << endl;
-	pers Anya = *Masha.getBirth("Anya", gender::female, &Ivan);
-	Anya.print(cout);
+	pers Vera = *Dasha.getBirth("Vera", gender::female, &Ivan);
+	Vera.print(cout);
 	cout << endl;
-	pers Jenya = *Anya.getBirth("", gender::male);
+	pers Jenya = *Vera.getBirth("Jenya", gender::male);
 	Jenya.print(cout);
+	cout << endl;
+	pers Eva2= *Vera.getBirth("Eva", gender::female);
+	Eva2.print(cout);
 	cout << endl;
 	pers Fedya("Fedya", gender::male);
 

@@ -2,7 +2,7 @@
 #pragma warning (disable:4996)
 #include<iostream>
 using namespace std;
-enum class gender { male , female };
+const enum class gender { male , female };
 class pers
 {
 private:

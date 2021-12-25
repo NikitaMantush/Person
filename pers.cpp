@@ -44,12 +44,7 @@ void pers::print(ostream& oc)
 
 }
 pers::pers(const char* name, gender gender, pers * mother, pers * father):_ID(++_nextID)
-	{
-		aname = new char[strlen(name) + 1];
-		strcpy(aname, name);
-		aGender = gender;
-		aMother = mother;
-		aFather = father;
+{
 		try
 		{
 			if (name == nullptr)
@@ -75,29 +70,33 @@ pers::pers(const char* name, gender gender, pers * mother, pers * father):_ID(++
 			cout << exp.what() << endl;
 			exit(0);
 		}
-	}
+		aname = new char[strlen(name) + 1];
+		strcpy(aname, name);
+		aGender = gender;
+		aMother = mother;
+		aFather = father;
+}
 pers* pers::getBirth(const char* name, gender gender, pers* father)
+{
+	const char* addname = "";
+	try
 	{
-		const char* addname = "";
-		if (name != "")
+		if (name == "")
 		{
-			addname = name;
+			throw exception("человек должен иметь имя");
 		}
 		else
 		{
-			try
-			{
-				if (name == "")
-				{
-					throw exception("человек должен иметь имя");
-				}
-			}
-			catch (const exception& exp)
-			{
-				cout << exp.what() << endl;
-				exit(0);
-			}
+			addname = name;
 		}
-		auto childe = new pers(addname, gender,this, father);
-		return childe;
 	}
+	catch (const exception& exp)
+	{
+		cout << exp.what() << endl;
+		exit(0);
+	}
+
+	auto childe = new pers(addname, gender, this, father);
+	return childe;
+}
+	
