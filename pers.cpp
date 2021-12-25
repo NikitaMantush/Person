@@ -20,24 +20,24 @@ const char* pers::getFather()
 }
 const char* pers::getGender()
 {
-	return this->aGender == gender::male ? "мужчина" : "жещина";
+	return this->aGender == gender::male ? "РјСѓР¶С‡РёРЅР°" : "Р¶РµС‰РёРЅР°";
 }
 void pers::print(ostream& oc)
 {
-	oc << "имя человека :" <<getName() << endl;
-	oc << "ID человека :" << getID() << endl;
-	oc << "Пол человека :" << getGender() << endl;
+	oc << "РёРјСЏ С‡РµР»РѕРІРµРєР° :" <<getName() << endl;
+	oc << "ID С‡РµР»РѕРІРµРєР° :" << getID() << endl;
+	oc << "РџРѕР» С‡РµР»РѕРІРµРєР° :" << getGender() << endl;
 	if (_ID > 2)
 	{
-		oc << "мать :" << getMother() << endl;
+		oc << "РјР°С‚СЊ :" << getMother() << endl;
 
 		if (aFather != nullptr)
 		{
-			oc << "отец :" << getFather() << endl;
+			oc << "РѕС‚РµС† :" << getFather() << endl;
 		}
 		else
 		{
-			oc << "отец неизвестен!" << endl;
+			oc << "РѕС‚РµС† РЅРµРёР·РІРµСЃС‚РµРЅ!" << endl;
 		}
 	}
 
@@ -49,20 +49,20 @@ pers::pers(const char* name, gender gender, pers * mother, pers * father):_ID(++
 		{
 			if (name == nullptr)
 			{
-				throw exception("Человек должен иметь имя");
+				throw exception("Р§РµР»РѕРІРµРє РґРѕР»Р¶РµРЅ РёРјРµС‚СЊ РёРјСЏ");
 			}
 			if (_ID > 2 && mother == nullptr)
 			{
-				throw exception("Одним из родителей должна быть мать");
+				throw exception("РћРґРЅРёРј РёР· СЂРѕРґРёС‚РµР»РµР№ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РјР°С‚СЊ");
 			}
 
 			if (mother != nullptr && mother->aGender == gender::male)
 			{
-				throw exception("Мать должна быть женщиной");
+				throw exception("РњР°С‚СЊ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р¶РµРЅС‰РёРЅРѕР№");
 			}
 			if (father != nullptr && father->aGender == gender::female)
 			{
-				throw exception("Отец должен быть мужчиной");
+				throw exception("РћС‚РµС† РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РјСѓР¶С‡РёРЅРѕР№");
 			}
 		}
 		catch (const exception& exp)
@@ -83,7 +83,7 @@ pers* pers::getBirth(const char* name, gender gender, pers* father)
 	{
 		if (name == "")
 		{
-			throw exception("человек должен иметь имя");
+			throw exception("С‡РµР»РѕРІРµРє РґРѕР»Р¶РµРЅ РёРјРµС‚СЊ РёРјСЏ");
 		}
 		else
 		{
